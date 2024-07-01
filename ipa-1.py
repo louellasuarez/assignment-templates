@@ -1,17 +1,17 @@
-'''Individual Programming Assignment 1
+'''Module 2: Individual Programming Assignment 1
 
-20 points
+Useful Business Calculations
 
-This assignment will develop your basic familiarity with Python.
+This assignment covers your basic proficiency with Python.
 '''
 
 def savings(gross_pay, tax_rate, expenses):
     '''Savings.
-    5 points.
+    2 points.
 
     This function calculates the money remaining
         for an employee after taxes and expenses.
-
+    
     To get the take-home pay of an employee, we will
         follow the following process:
         1. Apply the tax rate to the gross pay of the employee; round down
@@ -31,26 +31,15 @@ def savings(gross_pay, tax_rate, expenses):
     int
         the number of centavos remaining from an employee's pay after taxes and expenses
     '''
-    # Replace `pass` with your code.
+    # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    
-    gross_pay = int(input("Gross Pay (in centavos): "))
-    tax_rate = float(input("Tax Rate (in decimal form): "))
-    
-    while tax_rate > 1 or tax_rate < 0:
-        print("Please make sure the tax rate is a decimal between 0 to 1")
-        tax_rate = float(input("Tax Rate (in decimal form): "))
-    
-    else:
-        expenses = int(input("Expenses: "))
-    
-    savings = math.floor((gross_pay * (1 - tax_rate))) - expenses
-    
-    print("Savings: ", savings)
+
+    save=int(gross_pay-(gross_pay*tax_rate))-expenses
+    return save
 
 def material_waste(total_material, material_units, num_jobs, job_consumption):
     '''Material Waste.
-    5 points.
+    2 points.
 
     This function calculates how much material input will be wasted
         after running a certain number of jobs that consume
@@ -79,26 +68,22 @@ def material_waste(total_material, material_units, num_jobs, job_consumption):
     str
         the amount of remaining material expressed with its unit (e.g., "10kg").
     '''
-    # Replace `pass` with your code.
+    # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-
-    total_material = int(input("Total Material: "))
-    material_units = str(input("Material Unit: "))
-    num_jobs = int(input("Number of Jobs to run: "))
-    job_consumption = int(input("Amount of Material Consumed per Job: "))
     
-    waste_material = total_material - (num_jobs * job_consumption)
+    material_waste = total_material - num_jobs * job_consumption
     
-    print("Remaining Material: ", waste_material, material_units)
+    return str(material_waste) + material_units
+    
 
 def interest(principal, rate, periods):
     '''Interest.
-    5 points.
+    3 points.
 
     This function calculates the final value of an investment after
         gaining simple interest over a number of periods.
 
-    To calculate simple interest, simply multiply the principal to the quantity (rate * time).
+    To calculate simple interest, simply multiply the principal to the quantity (rate * time). 
         Add this amount to the principal to get the final value.
 
     Round down the final amount.
@@ -117,23 +102,17 @@ def interest(principal, rate, periods):
     int
         the final value of the investment
     '''
-    # Replace `pass` with your code.
+    # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-
-import math
-
-principal = int(input("Starting Amount Invested: "))
-rate = float(input("Rate (in decimals; eg e.g., 3% is 0.03): "))
-period = int(input("Number of Periods Invested: "))
-
-interest = math.floor((principal * rate * period) + principal)
-
-print("Final Value of Investment:", interest)
-
+    
+    import math
+    
+    value= int(principal*rate*periods+principal)
+    return value
 
 def body_mass_index(weight, height):
     '''Body Mass Index.
-    5 points.
+    3 points.
 
     This function calculates the body mass index (BMI) of a person
         given their weight and height.
@@ -141,10 +120,9 @@ def body_mass_index(weight, height):
     The formula for BMI is: kg / (m ^ 2)
         (i.e., kilograms over meters squared)
 
-
     Unfortunately, the users of this function use the imperial system.
         You will need to first convert their arguments to the metric system.
-
+    
     Parameters
     ----------
     weight: float
@@ -155,30 +133,13 @@ def body_mass_index(weight, height):
         the second integer is the inches component of their height.
         for example, 5'10" would be passed as [5, 10].
 
-    We have not yet discussed lists, but use the skills you developed
-        in the command line exercise. How would you learn how to work with
-        lists?
-
     Returns
     -------
     float
         the BMI of the person.
     '''
-    # Replace `pass` with your code.
+    # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-weight = float(input("Weight (lbs.): "))
-x = input("Height in feet (eg 5,3): ")
 
-height = list(x)
-
-feet = height[0]
-inches = height[2]
-
-weight_kg = weight / 2.2
-total_inches = (int(feet) * 12) + int(inches)
-
-height_m = float(total_inches * 0.0254)
-
-bmi = weight_kg / (height_m ** 2)
-
-print("BMI: ", bmi)
+    bmi= (weight/2.2)/((((height[0]*12 + height[1])*2.54)/100)**2)
+    return bmi
